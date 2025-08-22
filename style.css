@@ -1,0 +1,124 @@
+body
+{
+    background-color: #f4f3e9;
+    margin:0;
+    padding: 0;
+    min-height:100vh;
+    display: grid;
+    place-items: center;
+    color: #1f2937;
+}
+/* 垂直堆叠：上面是圆圈，下面是文字 */
+.stack{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;           /* 圆圈与文字的间距，按需改 */
+}
+.typewriter{ margin:0; }
+.typewriter + .typewriter{ margin-top: 0px; }  /* 第一行 ↔ 第二行 的间距 */
+
+
+/* From Uiverse.io by Deri-Kurniawan */ 
+.loader {
+    
+  perspective: 600px;
+  width: 100px;
+  height: 100px;
+}
+
+.cube {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: rotate 4s linear infinite;
+}
+
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  border: 1px solid #3f3f3f;
+}
+
+.face:nth-child(1) {
+  transform: rotateX(90deg) translateZ(50px);
+}
+
+.face:nth-child(2) {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+.face:nth-child(3) {
+  transform: translateZ(50px);
+}
+
+.face:nth-child(4) {
+  transform: rotateY(90deg) translateZ(50px);
+}
+
+.face:nth-child(5) {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+
+.face:nth-child(6) {
+  transform: rotateY(180deg) translateZ(50px);
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+
+  100% {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+
+  /* 核心打字样式 */
+  .typewriter {
+    display: inline-block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+                 "Noto Sans Mono CJK SC", "Source Han Mono SC", monospace;
+    white-space: nowrap;         /* 单行打字效果 */
+    overflow: hidden;            /* 超出部分隐藏，实现“逐字出现” */
+    border-right: var(--caret-width) solid var(--caret-color); /* 光标 */
+    width: 0;                    /* 动画从 0 宽开始 */
+    --duration: 1s;              /* 默认时长，可用 .fast/.slow 改 */
+    animation:
+      typing var(--duration) steps(var(--chars)) forwards,
+      caret 1s step-end infinite;
+    animation-delay: var(--delay,0s);
+  }
+  
+  .fast{ --duration: 1s; }
+  .slow{ --duration: 4s; }  
+  /* 关键：根据字符数把宽度从 0 动到 N 个“字符宽度” */
+  @keyframes typing { to { width: calc(var(--chars) * 1ch); } }
+  
+
+  
+  /* 字符数工具类（按需扩展）。
+     约定：英文/空格/半角符号 ≈ 1ch；全角中文/全角标点 ≈ 2ch。*/
+  .len-1  { --chars: 1; }
+  .len-2  { --chars: 2; }
+  .len-3  { --chars: 3; }
+  .len-4  { --chars: 4; }
+  .len-5  { --chars: 5; }
+  .len-6  { --chars: 6; }
+  .len-7  { --chars: 7; }
+  .len-8  { --chars: 8; }
+  .len-9  { --chars: 9; }
+  .len-10 { --chars:10; }
+  .len-12 { --chars:12; }
+  .len-14 { --chars:14; }
+  .len-16 { --chars:16; }
+  .len-18 { --chars:18; }
+  .len-20 { --chars:20; }
+  .len-24 { --chars:24; }
+  .len-62 { --chars:62; }
+  .len-49 { --chars:49; }
+  
+  
